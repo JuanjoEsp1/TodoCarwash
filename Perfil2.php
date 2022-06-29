@@ -35,7 +35,8 @@ $idEmpresa = $row['idEmpresa'];
     <!-- modal nuevo horario -->
     <div class="container">
         <div class="modal-body">
-
+            <h1>Registrar Horario de la semana</h1>
+            <hr>
             <form id="horariofrm" method="post" action="../TodoCarwash/Process.php">
                 <label>Dias:</label>
                 <div id="days-list" class="col-sm-12">
@@ -62,8 +63,8 @@ $idEmpresa = $row['idEmpresa'];
                     <option value="60">1 Hora</option>
                 </select>
                 <div class="modal-footer">
-                    <button type="submit" value="crear">Crear</button>
-                    <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
+                    <button type="submit" value="crear" class="btn btn-primary">Crear</button>
+                    <a type="button" name="Volver" class="btn btn-danger" href="Perfil.php">Volver al Perfil</a>
                 </div>
             </form>
 
