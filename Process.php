@@ -43,7 +43,7 @@ $FechaFin = $_POST['fechaFin'];
     <h1><?php echo 'Hora de Cierre: ' .$HoraFin ?></h1>
     <h1><?php echo 'La Fecha de hoy es: ' .date('d F, Y'); ?></h1>
     <h1><?php echo 'La Fecha de hoy es: ' .date('d F'); ?></h1>
-    <h1><?php echo 'Hoy es ' . date('l.'); ?></h1>
+    <h1><?php echo 'Hoy es: ' . date('l.'); ?></h1>
 
     <?php
     /**
