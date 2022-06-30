@@ -71,14 +71,14 @@ include("Funciones/db.php");
     $sql2 = mysqli_query($conexion, "SELECT idSERVICIO, nombre_servicio FROM servicio WHERE EMPRESA_idEmpresa='$nik'");
     $resultado2 = ($sql2);
 
-    $sql3 = mysqli_query($conexion, "SELECT idHORAS, fecha, hora FROM horas WHERE EMPRESA_idEmpresa='$nik' AND disponibilidad = 'si' ORDER BY fecha, hora");
+    $sql3 = mysqli_query($conexion, "SELECT idHORAS, fecha, hora FROM horas WHERE EMPRESA_idEmpresa='$nik' AND disponible = 'si' ORDER BY fecha, hora");
     $resultado3 = ($sql3);
 
     ?>
 
     <form method="post" action="Funciones/Agendar.php" class="container">
 
-        <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required >
+        <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
         <br>
         Ingrese su Nombre: <br>
         <input type="text" name="nomCLIENTE" required>
@@ -118,9 +118,13 @@ include("Funciones/db.php");
                 <option value="0">seleccionar Hora</option>
                 <?php while ($row = $resultado3->fetch_assoc()) {
                 ?>
-                    <option value="<?php echo $row['idHORAS']; ?>"><?php echo $row['fecha']; ?><?php echo' / ' ?><?php echo $row['hora']; ?></option>
+                    <option value="<?php echo $row['idHORAS']; ?>"><?php echo $row['fecha']; ?><?php echo ' / ' ?><?php echo $row['hora']; ?></option>
                 <?php } ?>
             </select>
+        </div>
+        <br>
+        <div>
+
         </div>
         <br>
 

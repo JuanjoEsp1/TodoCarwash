@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-
+include("Funciones/db.php");
 date_default_timezone_set("America/Santiago");
 // Dias
 $dias = explode(',', $_POST['days']);
@@ -101,10 +101,7 @@ $diferenciaDias = $FechaFin3 - $FechaIn3;
 
                 //echo '<br>' . $nuevaFecha . ' ' . $HoraInicio;
 
-                $conexion = mysqli_connect("localhost", "root", "", "pruebahoras") or
-                    die("Problemas con la conexion");
-
-                mysqli_query($conexion, "INSERT INTO horas (fecha, hora, idEmpresa, disponible) VALUES ('$nuevaFecha', '$HoraInicio','$_REQUEST[idEmpresa]','si')")
+                mysqli_query($conexion, "INSERT INTO horas (EMPRESA_idEmpresa,disponible,fecha,hora) VALUES ('$_REQUEST[idEmpresa]','si','$nuevaFecha', '$HoraInicio')")
 
                     or die("Problemas en la consulta" . mysqli_error($conexion));
             }
@@ -113,12 +110,9 @@ $diferenciaDias = $FechaFin3 - $FechaIn3;
                 $ResEntreHora = $entreHora2 * $j;
                 $nuevaHora = date("H:i:s", strtotime($HoraInicio) + $ResEntreHora);
 
-               // echo '<br>' . $nuevaFecha . ' ', $nuevaHora;
+                //echo '<br>' . $nuevaFecha . ' ', $nuevaHora;
 
-                $conexion = mysqli_connect("localhost", "root", "", "pruebahoras") or
-                    die("Problemas con la conexion");
-
-                mysqli_query($conexion, "INSERT INTO horas (fecha, hora, idEmpresa, disponible) VALUES ('$nuevaFecha', '$nuevaHora','$_REQUEST[idEmpresa]','si')")
+                mysqli_query($conexion, "INSERT INTO horas (EMPRESA_idEmpresa,disponible,fecha,hora) VALUES ('$_REQUEST[idEmpresa]','si','$nuevaFecha', '$nuevaHora')")
 
                     or die("Problemas en la consulta" . mysqli_error($conexion));
             }

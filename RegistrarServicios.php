@@ -31,26 +31,7 @@ $idEmpresa = $row['idEmpresa'];
 </head>
 
 <body>
-    <nav>
-        <ul class="ul-1">
-            <li><a class="a-1" href="Cerrar_session.php">Cerrar sesion</a></li>
-            <li><a class="a-2" href="ModificarPerfil.php">Modificar datos del Perfil</a></li>
-            <li><a class="a-3" href="ModificarHoras.php">Modificar Horas</a></li>
-            <li><a class="a-3" href="ModificarServicios.php">Modificar Servicios</a></li>
-            <!--<li><a class="a-3" href="ModificarHoras2.php">Modificar Horas 2</a></li> -->
-            <li><a class="a-3" href="ModificarDescripcion.php">Modificar Descripcion</a></li>
-            <li><a class="a-3" href="Perfil2.php">Registrar Horas por Fecha</a></li>
-            <li><a class="a-3" href="RegistrarServicios.php">Registrar Servicios</a></li>
-        </ul>
-    </nav>
-
-
-
-
-
     <div class="container">
-        <h1>Bienvenido:<?php echo utf8_encode($row['nombre_empresa']); ?></h1>
-        <hr>
         <div class="row">
             <div class="col-md-12">
 
@@ -92,61 +73,17 @@ $idEmpresa = $row['idEmpresa'];
                                 <div class="form-group mb-2">
                                     <label for="">Precio</label>
                                     <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">
-
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="paste-new-forms"></div>
-
                     <br>
                     <button type="submit" name="guardar_servicio" class="btn btn-primary">Guardar Servicio</button>
+                    <a type="button" name="Volver" class="btn btn-danger" href="Perfil.php">Volver al Perfil</a>
                 </form>
-
             </div>
-        </div>
-        <hr>
-        <h1>Horas Agendadas</h1>
-        <hr>
-        <article class="table-responsive">
-            <table class="table table-striped table-hover">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Telefono</th>
-                    <th>Id Servicio</th>
-                    <th>Hora</th>
-                    <th>Fecha</th>
-                </tr>
-                <?php
-                $sql = mysqli_query($conexion, "SELECT * FROM agendamiento 
-                INNER JOIN horas ON agendamiento.HORAS_idHORAS = horas.idHORAS 
-                INNER JOIN servicio ON agendamiento.SERVICIO_idSERVICIO = servicio.idSERVICIO 
-                WHERE agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
-
-                if (mysqli_num_rows($sql) == 0) {
-                    echo '<tr><td colspan="8">No hay datos.</td></tr>';
-                } else {
-                    while ($row = mysqli_fetch_assoc($sql)) {
-                        echo '
-						<tr>
-                            <td>' . $row['idAGENDAMIENTO'] . '</td>
-                            <td>' . $row['nomCLIENTE'] . ' ' . $row['apellCLIENTE'] . '</td>
-                            <td>' . $row['numCLIENTE'] . '</td>
-							<td>' . $row['nombre_servicio'] . '</td>
-                            <td>' . $row['hora'] . '</td>
-                            <td>' . $row['fecha'] . '</td>				
-						</tr>
-						';
-                    }
-                }
-                ?>
-            </table>
-        </article>
-        <div>
-            <hr>
-
         </div>
     </div>
 
