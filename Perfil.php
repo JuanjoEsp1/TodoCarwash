@@ -67,35 +67,43 @@ $idEmpresa = $row['idEmpresa'];
 
             </div>
         </div>
-        <div class="card-header">
-            <h4>Ingresar Servicios</h4>
-        </div>
-        <div class="card-body">
-            <form action="IngresarServicios.php" method="POST">
-                <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
 
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4>Ingresar Servicios</h4>
+                <a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">Agregar mas Horas</a>
+            </div>
+            <div class="card-body">
 
-                <div class="main-form mt-3 border-bottom">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group mb-2">
-                                <label for="">Servicios</label>
-                                <input type="text" name="servicio[]" class="form-control" required placeholder="Nombre del servicio">
+                <form action="IngresarServicios.php" method="POST">
+
+                    <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
+
+                    <div class="main-form mt-3 border-bottom">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="">Servicios</label>
+                                    <input type="text" name="servicio[]" class="form-control" required placeholder="Nombre del servicio">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group mb-2">
-                                <label for="">Precio</label>
-                                <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="">Precio</label>
+                                    <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <button type="submit" name="guardar_servicio" class="btn btn-primary">Guardar Servicio</button>
-            </form>
 
+                    <div class="paste-new-forms"></div>
+
+                    <br>
+                    <button type="submit" name="guardar_servicio" class="btn btn-primary">Guardar Servicio</button>
+                </form>
+
+            </div>
         </div>
         <hr>
         <h1>Horas Agendadas</h1>
@@ -141,15 +149,6 @@ $idEmpresa = $row['idEmpresa'];
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -165,14 +164,14 @@ $idEmpresa = $row['idEmpresa'];
                                 <div class="row">\
                                     <div class="col-md-4">\
                                         <div class="form-group mb-2">\
-                                            <label for="">Fecha</label>\
-                                            <input type="date" name="fecha[]" class="form-control" required placeholder="Ingrese Fecha">\
+                                            <label for="">Servicios</label>\
+                                            <input type="text" name="servicio[]" class="form-control" required placeholder="Nombre del servicio">\
                                         </div>\
                                     </div>\
                                     <div class="col-md-4">\
                                         <div class="form-group mb-2">\
-                                            <label for="">Hora</label>\
-                                            <input type="time" name="hora[]" class="form-control" required placeholder="Ingrese Hora">\
+                                            <label for="">Precio</label>\
+                                            <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">\
                                         </div>\
                                     </div>\
                                     <div class="col-md-4">\
@@ -187,12 +186,7 @@ $idEmpresa = $row['idEmpresa'];
 
         });
     </script>
-
-
-
-
-
-
+    </div>
 </body>
 
 </html>
