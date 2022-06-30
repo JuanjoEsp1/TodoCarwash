@@ -10,22 +10,33 @@ $countdays = count($dias);
 //for($i=0; $i <= $countdays;$i++){}
 
 // Hora Inicio 24 Horas
-$HoraInicio = date('H:i', strtotime($_POST['tiempo1']));
-$HoraFin = date('G:i', strtotime($_POST['tiempo2']));
+$HoraInicio = date('H:i:s', strtotime($_POST['tiempo1']));
+$HoraFin = date('H:i:s', strtotime($_POST['tiempo2']));
 $entreHora = $_POST['minutos'];
 $entreHora2 = $entreHora * 60;
 $diferencia = ($HoraFin - $HoraInicio);
 
+//Obtenemos las fechas ingresadas
 $FechaIn = $_POST['fechaIn'];
 $FechaFin = $_POST['fechaFin'];
 
-$FechaIn2 = date('d-m-y', strtotime($FechaIn));
-$FechaFin2 = date('d-m-y', strtotime($FechaFin));
+/*Aplicamos formato a las fechas (2022-06-01)
+$FechaIn2 = date('Y-m-d', strtotime($FechaIn));
+$FechaFin2 = date('Y-m-d', strtotime($FechaFin)); 
+*/
 
-$FechaActual = date('d-m-Y');
+//Aplicamos otro formato para obtner la diferencia de dias (01-06-2022)
+$FechaIn3 = date('d-m-Y', strtotime($FechaIn));
+$FechaFin3 = date('d-m-Y', strtotime($FechaFin));
 
+//nos entrega la fecha actual
+$FechaActual = date('Y-m-d');
+
+//Cantidad de segundos por dia
 $entrefecha = 86400;
-$diferenciaDias = $FechaFin2 - $FechaIn2;
+
+//Obtenemos la cantidad de dias
+$diferenciaDias = $FechaFin3 - $FechaIn3;
 
 //$inicio =  date ( 'G:i' ,  strtotime ($data["params"]["tiempo1"]) ) ;             //fecha de inicio en formato 2022-07-12 09:30:00
 //$fin = date ( 'Y-m-j H:i:s' ,strtotime ( $entreHora , strtotime ($data["params"]["tiempo1"]))) ;  //fecha de fin en formato 2022-07-12 10:15:00
@@ -50,18 +61,10 @@ $diferenciaDias = $FechaFin2 - $FechaIn2;
 <body>
     <h1><?php echo 'Hora de Inicio: ' . $HoraInicio ?></h1>
     <h1><?php echo 'Hora de Cierre: ' . $HoraFin ?></h1>
-    <h1><?php echo 'La Fecha de hoy es: ' . date('d-m-Y'); ?></h1>
-    <h1><?php echo 'Hoy es!!: ' . $FechaIn2; ?></h1>
-    <h1><?php echo 'Diferencia: ' . $diferenciaDias; ?></h1>
+    <h1><?php echo 'Fecha de inicio: ' . $FechaIn3; ?></h1>
+    <h1><?php echo 'Fecha de fin: ' . $FechaFin3; ?></h1>
     <?php
 
-
-    /**
-     * Comparacion de Fecha ingresada con la Fecha Actual!
-     */
-    if ($FechaIn2 > $FechaActual) {
-        echo 'Fecha ok!' . $FechaIn2;
-    }
     /**
      * Fecha inicial del rango de fechas
      */
@@ -77,7 +80,7 @@ $diferenciaDias = $FechaFin2 - $FechaIn2;
      * que tiene un dia (24 horas * 60 minutos * 60 segundos)
      */
     for ($i = $fecha1; $i <= $fecha2; $i += 86400) {
-        echo 'Fechas: ' . date("d-m-Y", $i) . "<br>";
+        //echo 'Fechas: ' . date("d-m-Y", $i) . "<br>";
     }
     ?>
     <br>
@@ -85,31 +88,55 @@ $diferenciaDias = $FechaFin2 - $FechaIn2;
 
     <?php
 
+    for ($y = $fecha1; $y <= $fecha2; $y += 86400) {
 
-    for ($y = 0; $y <= $diferenciaDias; $y++) {
+        /**
+         * Array de fecha y hora
+         */
+        for ($j = 0; $j < $diferencia; $j++) {
 
-        if ($y == 0) {
-            $ResFecha = $entrefecha * $y; // se va multiplicando por dia segun el array y se le suma a la fecha inicial.
-            $nuevaFecha = ($FechaIn2);
-            echo $nuevaFecha,'<br>';
+            $nuevaFecha = date("Y-m-d", $y);
 
-            /**
-             * Array de las Horas
-             */
-            for ($j = 0; $j < $diferencia; $j++) {
+            if ($j == 0) {
 
-                if ($j == 0) {
-                    echo '<br>',$nuevaFecha,' ', $HoraInicio;
-                }
-                if ($j >= 1) {
-                    $ResEntreHora = $entreHora2 * $j;
-                    $nuevaHora = date("H:i", strtotime($HoraInicio) + $ResEntreHora);
-                    echo '<br>',$nuevaFecha,' ', $nuevaHora;
-                }
+                //echo '<br>' . $nuevaFecha . ' ' . $HoraInicio;
+
+                $conexion = mysqli_connect("localhost", "root", "", "pruebahoras") or
+                    die("Problemas con la conexion");
+
+                mysqli_query($conexion, "INSERT INTO horas (fecha, hora, idEmpresa, disponible) VALUES ('$nuevaFecha', '$HoraInicio','$_REQUEST[idEmpresa]','si')")
+
+                    or die("Problemas en la consulta" . mysqli_error($conexion));
+            }
+            if ($j >= 1) {
+
+                $ResEntreHora = $entreHora2 * $j;
+                $nuevaHora = date("H:i:s", strtotime($HoraInicio) + $ResEntreHora);
+
+               // echo '<br>' . $nuevaFecha . ' ', $nuevaHora;
+
+                $conexion = mysqli_connect("localhost", "root", "", "pruebahoras") or
+                    die("Problemas con la conexion");
+
+                mysqli_query($conexion, "INSERT INTO horas (fecha, hora, idEmpresa, disponible) VALUES ('$nuevaFecha', '$nuevaHora','$_REQUEST[idEmpresa]','si')")
+
+                    or die("Problemas en la consulta" . mysqli_error($conexion));
             }
         }
+       
     }
+    echo "<br>Las horas se ingresaron exitosamente";
 
+
+
+
+
+
+
+
+    /**
+     * Array luneas a viernes con las horas
+     */
     /*for ($i = 0; $i < $countdays; $i++) {
         if ($dias[$i] == 1) {
 

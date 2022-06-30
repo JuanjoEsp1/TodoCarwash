@@ -38,7 +38,9 @@ $idEmpresa = $row['idEmpresa'];
             <h1>Registrar Horario de la semana</h1>
             <hr>
             <form id="horariofrm" method="post" action="../TodoCarwash/Process.php">
-                <label>Dias:</label>
+                <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
+
+                <!-- <label>Dias:</label>
                 <div id="days-list" class="col-sm-12">
                     <a data-day="1" class="day-option">Lunes</a>
                     <a data-day="2" class="day-option">Martes</a>
@@ -48,14 +50,15 @@ $idEmpresa = $row['idEmpresa'];
                     <a data-day="6" class="day-option">Sabado</a>
                     <a data-day="7" class="day-option">Domingo</a>
                 </div>
-                <input id="days-chose" class="form-control" type="text" name="days">
+                <input id="days-chose" class="form-control" type="text" name="days"> -->
+
                 <label for="">Fecha Inicio</label>
                 <input type="date" name="fechaIn" class="form-control" placeholder="Ingrese Fecha">
                 <label for="">Fecha Fin</label>
                 <input type="date" name="fechaFin" class="form-control" placeholder="Ingrese Fecha">
-                <label>Inicio:</label>
+                <label>Hora de Inicio:</label>
                 <input class="form-control" type="text" id="time1" name="tiempo1">
-                <label>Final:</label>
+                <label>Hora de Cierre:</label>
                 <input class="form-control" type="text" id="time2" name="tiempo2">
                 <label>Dividir Entre:</label>
                 <select class="form-control" name="minutos">

@@ -37,7 +37,7 @@ $idEmpresa = $row['idEmpresa'];
             <li><a class="a-2" href="ModificarPerfil.php">Modificar datos del Perfil</a></li>
             <li><a class="a-3" href="ModificarHoras.php">Modificar Horas</a></li>
             <li><a class="a-3" href="ModificarServicios.php">Modificar Servicios</a></li>
-            <li><a class="a-3" href="ModificarHoras2.php">Modificar Horas 2</a></li>
+            <!--<li><a class="a-3" href="ModificarHoras2.php">Modificar Horas 2</a></li> -->
             <li><a class="a-3" href="ModificarDescripcion.php">Modificar Descripcion</a></li>
             <li><a class="a-3" href="Perfil2.php">Registrar Horas</a></li>
         </ul>
@@ -65,78 +65,37 @@ $idEmpresa = $row['idEmpresa'];
                 }
                 ?>
 
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h4>Ingresar Horas</h4>
-                        <a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">Agregar mas Horas</a>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="IngresarHoras.php" method="POST">
-
-                            <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
-                            <input type="text" name="disponibilidad" value="si" readonly hidden required>
-
-                            <div class="main-form mt-3 border-bottom">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Fecha</label>
-                                            <input type="date" name="fecha[]" class="form-control" required placeholder="Ingrese Fecha">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Hora</label>
-                                            <input type="time" name="hora[]" class="form-control" required placeholder="ingrese Hora">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="paste-new-forms"></div>
-
-                            <br>
-
-                            <button type="submit" name="guardar_horas" class="btn btn-primary">Guardar Horas</button>
-                        </form>
-
-                    </div>
-                </div>
-                <hr>
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h4>Ingresar Servicios</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="IngresarServicios.php" method="POST">
-                            <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
-
-
-                            <div class="main-form mt-3 border-bottom">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Servicios</label>
-                                            <input type="text" name="servicio[]" class="form-control" required placeholder="Nombre del servicio">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group mb-2">
-                                            <label for="">Precio</label>
-                                            <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <button type="submit" name="guardar_servicio" class="btn btn-primary">Guardar Servicio</button>
-                        </form>
-
-                    </div>
-                </div>
             </div>
+        </div>
+        <div class="card-header">
+            <h4>Ingresar Servicios</h4>
+        </div>
+        <div class="card-body">
+            <form action="IngresarServicios.php" method="POST">
+                <input type="text" name="idEmpresa" value="<?php echo $row['idEmpresa']; ?>" readonly hidden required>
+
+
+                <div class="main-form mt-3 border-bottom">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="">Servicios</label>
+                                <input type="text" name="servicio[]" class="form-control" required placeholder="Nombre del servicio">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="">Precio</label>
+                                <input type="number" name="precio[]" class="form-control" required placeholder="Ingrese precio">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" name="guardar_servicio" class="btn btn-primary">Guardar Servicio</button>
+            </form>
+
         </div>
         <hr>
         <h1>Horas Agendadas</h1>
