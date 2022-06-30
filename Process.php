@@ -18,9 +18,11 @@ $diferencia = ($HoraFin - $HoraInicio);
 
 $FechaIn = $_POST['fechaIn'];
 $FechaFin = $_POST['fechaFin'];
+
 $FechaIn2 = date('d-m-y', strtotime($FechaIn));
 $FechaFin2 = date('d-m-y', strtotime($FechaFin));
-$Fechaprueba = date('d-m-Y');
+
+$FechaActual = date('d-m-Y');
 //$inicio =  date ( 'G:i' ,  strtotime ($data["params"]["tiempo1"]) ) ;             //fecha de inicio en formato 2022-07-12 09:30:00
 //$fin = date ( 'Y-m-j H:i:s' ,strtotime ( $entreHora , strtotime ($data["params"]["tiempo1"]))) ;  //fecha de fin en formato 2022-07-12 10:15:00
 
@@ -54,7 +56,7 @@ $Fechaprueba = date('d-m-Y');
     /**
      * Comparacion de Fecha ingresada con la Fecha Actual!
      */
-    if ($FechaIn2 > $Fechaprueba) {
+    if ($FechaIn2 > $FechaActual) {
         echo 'Fecha ok!' . $FechaIn2;
     }
     /**
