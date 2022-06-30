@@ -18,6 +18,9 @@ $diferencia = ($HoraFin - $HoraInicio);
 
 $FechaIn = $_POST['fechaIn'];
 $FechaFin = $_POST['fechaFin'];
+$FechaIn2 = date('d-m-y', strtotime($FechaIn));
+$FechaFin2 = date('d-m-y', strtotime($FechaFin));
+$Fechaprueba = date('d-m-Y');
 //$inicio =  date ( 'G:i' ,  strtotime ($data["params"]["tiempo1"]) ) ;             //fecha de inicio en formato 2022-07-12 09:30:00
 //$fin = date ( 'Y-m-j H:i:s' ,strtotime ( $entreHora , strtotime ($data["params"]["tiempo1"]))) ;  //fecha de fin en formato 2022-07-12 10:15:00
 
@@ -39,17 +42,25 @@ $FechaFin = $_POST['fechaFin'];
 </head>
 
 <body>
-    <h1><?php echo 'Hora de Inicio: ' .$HoraInicio ?></h1>
-    <h1><?php echo 'Hora de Cierre: ' .$HoraFin ?></h1>
-    <h1><?php echo 'La Fecha de hoy es: ' .date('d F, Y'); ?></h1>
-    <h1><?php echo 'La Fecha de hoy es: ' .date('d F'); ?></h1>
-    <h1><?php echo 'Hoy es: ' . date('l.'); ?></h1>
+    <h1><?php echo 'Hora de Inicio: ' . $HoraInicio ?></h1>
+    <h1><?php echo 'Hora de Cierre: ' . $HoraFin ?></h1>
+    <h1><?php echo 'La Fecha de hoy es: ' . date('d-m-Y'); ?></h1>
+    <h1><?php echo 'Hoy es: ' . $FechaIn; ?></h1>
+    <h1><?php echo 'Hoy es!!: ' . $FechaIn2; ?></h1>
 
     <?php
+
+
+    /**
+     * Comparacion de Fecha ingresada con la Fecha Actual!
+     */
+    if ($FechaIn2 > $Fechaprueba) {
+        echo 'Fecha ok!' . $FechaIn2;
+    }
     /**
      * Fecha inicial del rango de fechas
      */
-    $fecha1= strtotime($FechaIn);
+    $fecha1 = strtotime($FechaIn);
 
     /**
      * Fecha final del rango de fechas
