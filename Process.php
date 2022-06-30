@@ -23,6 +23,10 @@ $FechaIn2 = date('d-m-y', strtotime($FechaIn));
 $FechaFin2 = date('d-m-y', strtotime($FechaFin));
 
 $FechaActual = date('d-m-Y');
+
+$entrefecha = 86400;
+$diferenciaDias = $FechaFin2 - $FechaIn2;
+
 //$inicio =  date ( 'G:i' ,  strtotime ($data["params"]["tiempo1"]) ) ;             //fecha de inicio en formato 2022-07-12 09:30:00
 //$fin = date ( 'Y-m-j H:i:s' ,strtotime ( $entreHora , strtotime ($data["params"]["tiempo1"]))) ;  //fecha de fin en formato 2022-07-12 10:15:00
 
@@ -48,7 +52,7 @@ $FechaActual = date('d-m-Y');
     <h1><?php echo 'Hora de Cierre: ' . $HoraFin ?></h1>
     <h1><?php echo 'La Fecha de hoy es: ' . date('d-m-Y'); ?></h1>
     <h1><?php echo 'Hoy es!!: ' . $FechaIn2; ?></h1>
-
+    <h1><?php echo 'Diferencia: ' . $diferenciaDias; ?></h1>
     <?php
 
 
@@ -73,7 +77,7 @@ $FechaActual = date('d-m-Y');
      * que tiene un dia (24 horas * 60 minutos * 60 segundos)
      */
     for ($i = $fecha1; $i <= $fecha2; $i += 86400) {
-        echo date("d-m-Y", $i) . "<br>";
+        echo 'Fechas: ' . date("d-m-Y", $i) . "<br>";
     }
     ?>
     <br>
@@ -81,7 +85,32 @@ $FechaActual = date('d-m-Y');
 
     <?php
 
-    for ($i = 0; $i < $countdays; $i++) {
+
+    for ($y = 0; $y <= $diferenciaDias; $y++) {
+
+        if ($y == 0) {
+            $ResFecha = $entrefecha * $y; // se va multiplicando por dia segun el array y se le suma a la fecha inicial.
+            $nuevaFecha = ($FechaIn2);
+            echo $nuevaFecha,'<br>';
+
+            /**
+             * Array de las Horas
+             */
+            for ($j = 0; $j < $diferencia; $j++) {
+
+                if ($j == 0) {
+                    echo '<br>',$nuevaFecha,' ', $HoraInicio;
+                }
+                if ($j >= 1) {
+                    $ResEntreHora = $entreHora2 * $j;
+                    $nuevaHora = date("H:i", strtotime($HoraInicio) + $ResEntreHora);
+                    echo '<br>',$nuevaFecha,' ', $nuevaHora;
+                }
+            }
+        }
+    }
+
+    /*for ($i = 0; $i < $countdays; $i++) {
         if ($dias[$i] == 1) {
 
             for ($j = 0; $j < $diferencia; $j++) {
@@ -177,7 +206,7 @@ $FechaActual = date('d-m-Y');
                 }
             }
         }
-    }
+    } */
 
     ?>
 

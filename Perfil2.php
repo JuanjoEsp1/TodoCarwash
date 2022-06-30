@@ -60,6 +60,7 @@ $idEmpresa = $row['idEmpresa'];
                 <label>Dividir Entre:</label>
                 <select class="form-control" name="minutos">
                     <option></option>
+                    <option value="30">30 Minutos</option>
                     <option value="60">1 Hora</option>
                 </select>
                 <div class="modal-footer">
