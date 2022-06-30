@@ -47,7 +47,6 @@ $FechaActual = date('d-m-Y');
     <h1><?php echo 'Hora de Inicio: ' . $HoraInicio ?></h1>
     <h1><?php echo 'Hora de Cierre: ' . $HoraFin ?></h1>
     <h1><?php echo 'La Fecha de hoy es: ' . date('d-m-Y'); ?></h1>
-    <h1><?php echo 'Hoy es: ' . $FechaIn; ?></h1>
     <h1><?php echo 'Hoy es!!: ' . $FechaIn2; ?></h1>
 
     <?php
