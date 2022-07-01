@@ -23,6 +23,8 @@
             <li><a class="a-6" href="Login.php">Iniciar Sesion</a></li>
         </ul>
     </nav>
+    <img src="IMG/logo2.jpg"/>
+    <h1>Bienvenido</h1>
 </body>
 
 </html>

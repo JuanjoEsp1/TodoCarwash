@@ -38,3 +38,7 @@ li a:hover:not(.a-1) {
 .a-1 {
     background-color: #4CAF50;
 }
+img {
+    width: 30%;
+    height: auto;
+  }
