@@ -35,16 +35,12 @@ include("Funciones/db.php");
 
             <table class="table table-striped table-condensed">
                 <tr>
-                    <th width="20%">ID</th>
-                    <td><?php echo $row['idEmpresa']; ?></td>
-                </tr>
-                <tr>
-                    <th>Nombre de la empresa</th>
+                    <th>Nombre de la Empresa</th>
                     <td><?php echo $row['nombre_empresa']; ?></td>
                 </tr>
                 <tr>
                     <th>Direccion</th>
-                    <td><?php echo $row['calle'] . ', ' . $row['numeracion']; ?></td>
+                    <td><?php echo $row['calle'] . ' ' . $row['numeracion']; ?></td>
                 </tr>
                 <tr>
                     <th>Comuna</th>

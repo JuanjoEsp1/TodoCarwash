@@ -62,11 +62,10 @@ include("Funciones/db.php");
             <article class="table-responsive">
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
-                        <th>calle</th>
-                        <th>numeracion</th>
-                        <th>comuna</th>
+                        <th>Calle</th>
+                        <th>Numeracion</th>
+                        <th>Comuna</th>
                         <th>Teléfono</th>
                     </tr>
                     <?php
@@ -82,7 +81,6 @@ include("Funciones/db.php");
                         while ($row = mysqli_fetch_assoc($sql)) {
                             echo '
 						<tr>
-							<td>' . $row['idEmpresa'] . '</td>
 							<td><a href="DetalleEmpresa.php?nik=' . $row['idEmpresa'] . '"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ' . $row['nombre_empresa'] . '</a></td>
                             <td>' . $row['calle'] . '</td>
                             <td>' . $row['numeracion'] . '</td>
