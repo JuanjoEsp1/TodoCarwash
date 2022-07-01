@@ -27,25 +27,35 @@ include("Funciones/db.php");
             <li><a class="a-6" href="Login.php">Iniciar Sesion</a></li>
         </ul>
     </nav>
+    <?php
+
+    $sql2 = mysqli_query($conexion, "SELECT comuna FROM empresa");
+    $resultado2 = ($sql2);
+
+    ?>
     <section class="container">
-        
+
         <article class="content">
             <h2>Lista de Empresas</h2>
             <hr />
             <form name="Buscarcomuna" action="MostrarEmpresas.php" method="POST">
-            Buscar:<input type="text" required name="search" value="" autocomplete="on">
+                Buscar:
+                <select name="search">
+                    <?php while ($row = $resultado2->fetch_assoc()) {
+                    ?>
+                        <option value="<?php echo $row['comuna']; ?>"><?php echo $row['comuna']; ?></option>
+                    <?php } ?>
+                </select>
 
-            
-            <input type="submit"  name="buscar" value="Buscar Comuna">
+                <input type="submit" name="buscar" value="Buscar Comuna">
             </form><br>
-            
+
 
             <?php
             if (isset($_GET['aksi'])) {
 
                 $nik = mysqli_real_escape_string($conexion, (strip_tags($_GET["nik"], ENT_QUOTES)));
                 $cek = mysqli_query($conexion, "SELECT * FROM empresa WHERE idEmpresa='$nik'");
-                
             }
             ?>
             <br>
@@ -61,10 +71,10 @@ include("Funciones/db.php");
                     </tr>
                     <?php
                     $sql = mysqli_query($conexion, "SELECT * FROM empresa idEmpresa");
-                    if(isset($_POST['buscar'])){
-                     
-                        $buscarComuna =strval($_POST['search']);
-                        $sql = mysqli_query($conexion, "SELECT * FROM empresa idEmpresa where comuna = '{$buscarComuna}' ");                      
+                    if (isset($_POST['buscar'])) {
+
+                        $buscarComuna = strval($_POST['search']);
+                        $sql = mysqli_query($conexion, "SELECT * FROM empresa WHERE comuna = '$buscarComuna' ");
                     }
                     if (mysqli_num_rows($sql) == 0) {
                         echo '<tr><td colspan="8">No hay datos.</td></tr>';
@@ -82,7 +92,7 @@ include("Funciones/db.php");
 						';
                         }
                     }
-                    
+
                     ?>
                 </table>
             </article>
