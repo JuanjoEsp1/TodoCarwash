@@ -68,7 +68,7 @@ include("Funciones/db.php");
 
     <?php
 
-    $sql2 = mysqli_query($conexion, "SELECT idSERVICIO, nombre_servicio FROM servicio WHERE EMPRESA_idEmpresa='$nik'");
+    $sql2 = mysqli_query($conexion, "SELECT idSERVICIO, nombre_servicio,precio_servicio FROM servicio WHERE EMPRESA_idEmpresa='$nik'");
     $resultado2 = ($sql2);
 
     $sql3 = mysqli_query($conexion, "SELECT idHORAS, fecha, hora FROM horas WHERE EMPRESA_idEmpresa='$nik' AND disponible = 'si' ORDER BY fecha, hora");
@@ -105,7 +105,7 @@ include("Funciones/db.php");
                 <option value="0">seleccionar un servicio</option>
                 <?php while ($row = $resultado2->fetch_assoc()) {
                 ?>
-                    <option value="<?php echo $row['idSERVICIO']; ?>"><?php echo $row['nombre_servicio']; ?></option>
+                    <option value="<?php echo $row['idSERVICIO']; ?>"><?php echo $row['nombre_servicio']; ?><?php echo ' / ' ?><?php echo '$' ?><?php echo $row['precio_servicio']; ?></option>
                 <?php } ?>
             </select>
         </div>

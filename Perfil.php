@@ -97,7 +97,7 @@ $idEmpresa = $row['idEmpresa'];
                             <td>' . $row['numCLIENTE'] . '</td>
 							<td>' . $row['nombre_servicio'] . '</td>
                             <td>' . $row['hora'] . '</td>
-                            <td>' . $row['fecha'] . '</td>				
+                            <td>' . date('d-m-Y', strtotime($row['fecha'])). '</td>				
 						</tr>
 						';
                     }
