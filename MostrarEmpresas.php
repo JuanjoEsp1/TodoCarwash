@@ -39,7 +39,7 @@ include("Funciones/db.php");
             <h2>Lista de Empresas</h2>
             <hr />
             <form name="Buscarcomuna" action="MostrarEmpresas.php" method="POST">
-                Buscar:
+                Comunas:
                 <select name="search">
                     <?php while ($row = $resultado2->fetch_assoc()) {
                     ?>
