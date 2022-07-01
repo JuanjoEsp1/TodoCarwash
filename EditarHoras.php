@@ -36,9 +36,9 @@ include("Funciones/db.php");
                     $codigo = mysqli_real_escape_string($conexion, (strip_tags($_POST["codigo"], ENT_QUOTES))); 
                     $fecha = mysqli_real_escape_string($conexion, (strip_tags($_POST["fecha"], ENT_QUOTES))); 
                     $hora = mysqli_real_escape_string($conexion, (strip_tags($_POST["hora"], ENT_QUOTES))); 
-                    $disponibilidad = mysqli_real_escape_string($conexion, (strip_tags($_POST["disponibilidad"], ENT_QUOTES))); 
+                    $disponibilidad = mysqli_real_escape_string($conexion, (strip_tags($_POST["disponible"], ENT_QUOTES))); 
 
-                    $update = mysqli_query($conexion, "UPDATE horas SET fecha='$fecha', hora='$hora', disponibilidad = '$disponibilidad' WHERE idHORAS='$nik'") 
+                    $update = mysqli_query($conexion, "UPDATE horas SET fecha='$fecha', hora='$hora', disponible = '$disponibilidad' WHERE idHORAS='$nik'") 
 
                     or die('error');
 
@@ -76,7 +76,7 @@ include("Funciones/db.php");
                     <article class="form-group">
                         <label class="col-sm-3 control-label">Disponible</label>
                         <article class="col-sm-4">
-                            <input type="text" name="disponibilidad" value="<?php echo $row ['disponibilidad']; ?>" class="form-control" maxlength="2" minlength="2" required> (si / no)
+                            <input type="text" name="disponible" value="<?php echo $row ['disponible']; ?>" class="form-control" maxlength="2" minlength="2" required> (si / no)
                         </article>
                     </article>
                   

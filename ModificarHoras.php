@@ -59,7 +59,7 @@ $idEmpresa = $row['idEmpresa'];
                                 echo '
 						<tr>
                             <td>' . $row['idHORAS'] . '</td>
-                            <td>' . $row['disponibilidad'] . '</td>
+                            <td>' . $row['disponible'] . '</td>
                             <td>' . $row['fecha'] . '</td>
 							<td>' . $row['hora'] . '</td>
                             <td>

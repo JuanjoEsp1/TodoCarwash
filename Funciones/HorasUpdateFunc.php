@@ -15,7 +15,7 @@ if (isset($_POST['actualizar'])) {
 
         $loggedInUser = $_SESSION['idEmpresa'];
 
-        $sql = "UPDATE horas SET disponibilidad = '$NuevaDispo' WHERE idHORAS ='$id'";
+        $sql = "UPDATE horas SET disponible = '$NuevaDispo' WHERE idHORAS ='$id'";
 
         $results = mysqli_query($conexion, $sql);
 
