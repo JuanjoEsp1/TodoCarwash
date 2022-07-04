@@ -33,7 +33,12 @@ $idEmpresa = $row['idEmpresa'];
 
 <body>
 
+    <?php
 
+    $sql2 = mysqli_query($conexion, "SELECT DISTINCT fecha FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa'");
+    $resultado2 = ($sql2);
+
+    ?>
     <div align="center">
         <hr>
         <h3>Actualizacion de Horas y Servicios</h3>
@@ -41,7 +46,25 @@ $idEmpresa = $row['idEmpresa'];
         <div class="row">
             <div class="col-md-6 offset-3">
 
+
                 <article class="table-responsive">
+
+                    <form name="BuscarFecha" action="ModificarHoras.php" method="POST">
+                        Fecha:
+                        <select name="search">
+                            <?php while ($row = $resultado2->fetch_assoc()) {
+                            ?>
+                                <option value="<?php echo $row['fecha']; ?>"><?php echo $row['fecha']; ?></option>
+                            <?php } ?>
+                        </select>
+
+                        <input type="submit" name="buscar" value="Buscar Fecha">
+                        <input type=submit value="Reset" name="btnReset">
+                    </form>
+                    <br>
+                    <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
+                    <br>
+                    <br>           
                     <table class="table table-striped table-hover">
                         <tr>
                             <th>ID</th>
@@ -52,6 +75,12 @@ $idEmpresa = $row['idEmpresa'];
                         </tr>
                         <?php
                         $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa'");
+
+                        if (isset($_POST['buscar'])) {
+
+                            $buscarFecha = strval($_POST['search']);
+                            $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE fecha = '$buscarFecha' ");
+                        }
                         if (mysqli_num_rows($sql) == 0) {
                             echo '<tr><td colspan="8">No hay datos.</td></tr>';
                         } else {
@@ -73,12 +102,10 @@ $idEmpresa = $row['idEmpresa'];
                         ?>
                     </table>
                 </article>
-
-
-                <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
-
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 
 </html>

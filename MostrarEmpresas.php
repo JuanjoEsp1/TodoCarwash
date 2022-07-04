@@ -29,7 +29,7 @@ include("Funciones/db.php");
     </nav>
     <?php
 
-    $sql2 = mysqli_query($conexion, "SELECT comuna FROM empresa");
+    $sql2 = mysqli_query($conexion, "SELECT DISTINCT comuna FROM empresa");
     $resultado2 = ($sql2);
 
     ?>
@@ -48,6 +48,7 @@ include("Funciones/db.php");
                 </select>
 
                 <input type="submit" name="buscar" value="Buscar Comuna">
+                <input type=submit value="Reset" name="btnReset">
             </form><br>
 
 
