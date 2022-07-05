@@ -74,7 +74,7 @@ $idEmpresa = $row['idEmpresa'];
                             <th>ACCIONES</th>
                         </tr>
                         <?php
-                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa'");
+                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si'");
 
                         if (isset($_POST['buscar'])) {
 
@@ -85,23 +85,27 @@ $idEmpresa = $row['idEmpresa'];
                             echo '<tr><td colspan="8">No hay datos.</td></tr>';
                         } else {
                             while ($row = mysqli_fetch_assoc($sql)) {
+
                                 echo '
 						<tr>
                             <td>' . $row['idHORAS'] . '</td>
                             <td>' . $row['disponible'] . '</td>
                             <td>' . $row['fecha'] . '</td>
 							<td>' . $row['hora'] . '</td>
-                            <td>
+                            <td>' ;
 
-								<a href="EditarHoras.php?nik=' . $row['idHORAS'] . '" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-							</td>			
-						</tr>
+                            if($row['disponible']=="si")
+                                echo 
+        "<a href=Desactivar.php?id=".$row['idHORAS']." class='btn red'>Desactivar</a>"; 
+							'</td>			
+						</tr> 
 						';
                             }
                         }
                         ?>
                     </table>
                 </article>
+                
             </div>
         </div>
     </div>
