@@ -74,7 +74,8 @@ $idEmpresa = $row['idEmpresa'];
                             <th>ACCIONES</th>
                         </tr>
                         <?php
-                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si'");
+                        $FechaActual = date('d-m-Y');
+                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si' AND fecha > Now() ORDER BY fecha, hora ");
 
                         if (isset($_POST['buscar'])) {
 
@@ -96,7 +97,7 @@ $idEmpresa = $row['idEmpresa'];
 
                             if($row['disponible']=="si")
                                 echo 
-        "<a href=Desactivar.php?id=".$row['idHORAS']." class='btn red'>Desactivar</a>"; 
+        "<a href=Desactivar.php?id=".$row['idHORAS']." class='btn red'>Anular</a>"; 
 							'</td>			
 						</tr> 
 						';
