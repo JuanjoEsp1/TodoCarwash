@@ -45,7 +45,7 @@ $idEmpresa = $row['idEmpresa'];
         </ul>
     </nav>
     <?php
-    
+
     $sql2 = mysqli_query($conexion, "SELECT DISTINCT fecha FROM horas
     INNER JOIN agendamiento ON agendamiento.HORAS_idHORAS = horas.idHORAS
     WHERE agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
@@ -95,11 +95,13 @@ $idEmpresa = $row['idEmpresa'];
             <table class="table table-striped table-hover">
                 <tr>
                     <th>ID</th>
+                    <th>Estado</th>
                     <th>Nombre</th>
                     <th>Telefono</th>
                     <th>Id Servicio</th>
                     <th>Hora</th>
                     <th>Fecha</th>
+                    <th>Accion</th>
                 </tr>
                 <?php
 
@@ -114,7 +116,7 @@ $idEmpresa = $row['idEmpresa'];
                     $sql = mysqli_query($conexion, "SELECT * FROM agendamiento
                     RIGHT JOIN horas ON agendamiento.HORAS_idHORAS = horas.idHORAS 
                     INNER JOIN servicio ON agendamiento.SERVICIO_idSERVICIO = servicio.idSERVICIO 
-                    WHERE fecha = '$buscarFecha' AND agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
+                    WHERE fecha = '$buscarFecha' AND agendamiento.EMPRESA_idEmpresa = '$idEmpresa' AND fecha > Now() ORDER BY fecha, hora");
                 }
                 if (mysqli_num_rows($sql) == 0) {
                     echo '<tr><td colspan="8">No hay datos.</td></tr>';
@@ -123,11 +125,18 @@ $idEmpresa = $row['idEmpresa'];
                         echo '
 						<tr>
                             <td>' . $row['idAGENDAMIENTO'] . '</td>
+                            <td>' . $row['estado'] . '</td>
                             <td>' . $row['nomCLIENTE'] . ' ' . $row['apellCLIENTE'] . '</td>
                             <td>' . $row['numCLIENTE'] . '</td>
 							<td>' . $row['nombre_servicio'] . '</td>
                             <td>' . $row['hora'] . '</td>
-                            <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>				
+                            <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>
+                            <td>' ;
+
+                            if($row['estado']=="activa")
+                                echo 
+        "<a href=Cancelar.php?id=".$row['idAGENDAMIENTO']." class='btn red'>Cancelar</a>"; 
+							'</td>			
 						</tr>
 						';
                     }

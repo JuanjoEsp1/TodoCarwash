@@ -13,9 +13,9 @@
     $conexion = mysqli_connect("localhost", "root", "", "todocarwash2") or
         die("Problemas con la conexion");
 
-    mysqli_query($conexion, "insert into agendamiento(rutCLIENTE,nomCLIENTE,apellCLIENTE,dirCLIENTE,numCLIENTE,emailCLIENTE,HORAS_idHORAS, SERVICIO_idSERVICIO, EMPRESA_idEmpresa) values 
+    mysqli_query($conexion, "insert into agendamiento(rutCLIENTE,nomCLIENTE,apellCLIENTE,dirCLIENTE,numCLIENTE,emailCLIENTE,HORAS_idHORAS, SERVICIO_idSERVICIO, EMPRESA_idEmpresa, estado) values 
         ('$_REQUEST[rutCLIENTE]','$_REQUEST[nomCLIENTE]','$_REQUEST[apellCLIENTE]','$_REQUEST[dirCLIENTE]','$_REQUEST[numCLIENTE]','$_REQUEST[emailCLIENTE]','$_REQUEST[cbx_horas]','$_REQUEST[cbx_servicios]',
-        '$_REQUEST[idEmpresa]')")
+        '$_REQUEST[idEmpresa]','activa')")
 
         or die("Problemas en la consulta" . mysqli_error($conexion));
 
