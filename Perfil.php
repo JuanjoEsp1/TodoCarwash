@@ -28,6 +28,8 @@ $idEmpresa = $row['idEmpresa'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/Perfil.css" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>Perfil</title>
 </head>
 
@@ -136,7 +138,7 @@ $idEmpresa = $row['idEmpresa'];
 
                             if($row['estado']=="activa")
                                 echo 
-        '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'].'" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' .$row['hora'].'?\')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>';
+        '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'].'" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' .$row['hora'].'?\')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>';
 							'</td>			
 						</tr>
 						';
@@ -152,7 +154,6 @@ $idEmpresa = $row['idEmpresa'];
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
