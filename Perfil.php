@@ -42,7 +42,7 @@ $idEmpresa = $row['idEmpresa'];
             <li><a class="a-3" href="ModificarHoras.php">Modificar Horas</a></li>
             <li><a class="a-4" href="ModificarServicios.php">Modificar Servicios</a></li>
             <li><a class="a-8" href="SubirImagen.php">Subir Imagenes</a></li>
-            <li><a class="a-6" href="Perfil2.php">Registrar Horas por Fecha</a></li>
+            <li><a class="a-6" href="RegistrarHoras.php">Registrar Horas por Fecha</a></li>
             <li><a class="a-7" href="RegistrarServicios.php">Registrar Servicios</a></li>
             <li><a class="a-1" href="Cerrar_session.php">Cerrar sesion</a></li>
         </ul>
