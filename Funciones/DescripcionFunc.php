@@ -9,7 +9,7 @@ if (isset($_POST['actualizar'])) {
 
     $Nuevadescripcion = $_POST['descripcion'];
 
-    if (!empty($Nuevadescripcion)&& !empty($Nuevadescripcion)) {
+    if (!empty($Nuevadescripcion)) {
 
 
         $loggedInUser = $_SESSION['correo_empresa'];
