@@ -44,6 +44,15 @@ $idEmpresa = $row['idEmpresa'];
             <li><a class="a-1" href="Cerrar_session.php">Cerrar sesion</a></li>
         </ul>
     </nav>
+    <?php
+    
+    $sql2 = mysqli_query($conexion, "SELECT DISTINCT fecha FROM horas
+    INNER JOIN agendamiento ON agendamiento.HORAS_idHORAS = horas.idHORAS
+    WHERE agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
+
+    $resultado2 = ($sql2);
+
+    ?>
 
     <div class="container">
 
@@ -71,6 +80,18 @@ $idEmpresa = $row['idEmpresa'];
         <h1>Horas Agendadas</h1>
         <hr>
         <article class="table-responsive">
+            <form name="BuscarFecha" action="Perfil.php" method="POST">
+                Fecha:
+                <select name="search">
+                    <?php while ($row = $resultado2->fetch_assoc()) {
+                    ?>
+                        <option value="<?php echo $row['fecha']; ?>"><?php echo $row['fecha']; ?></option>
+                    <?php } ?>
+                </select>
+
+                <input type="submit" name="buscar" value="Buscar Fecha">
+                <input type=submit value="Reset" name="btnReset">
+            </form>
             <table class="table table-striped table-hover">
                 <tr>
                     <th>ID</th>
@@ -81,11 +102,20 @@ $idEmpresa = $row['idEmpresa'];
                     <th>Fecha</th>
                 </tr>
                 <?php
+
                 $sql = mysqli_query($conexion, "SELECT * FROM agendamiento 
                 INNER JOIN horas ON agendamiento.HORAS_idHORAS = horas.idHORAS 
                 INNER JOIN servicio ON agendamiento.SERVICIO_idSERVICIO = servicio.idSERVICIO 
                 WHERE agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
 
+                if (isset($_POST['buscar'])) {
+
+                    $buscarFecha = strval($_POST['search']);
+                    $sql = mysqli_query($conexion, "SELECT * FROM agendamiento
+                    RIGHT JOIN horas ON agendamiento.HORAS_idHORAS = horas.idHORAS 
+                    INNER JOIN servicio ON agendamiento.SERVICIO_idSERVICIO = servicio.idSERVICIO 
+                    WHERE fecha = '$buscarFecha' AND agendamiento.EMPRESA_idEmpresa = '$idEmpresa'");
+                }
                 if (mysqli_num_rows($sql) == 0) {
                     echo '<tr><td colspan="8">No hay datos.</td></tr>';
                 } else {
@@ -97,7 +127,7 @@ $idEmpresa = $row['idEmpresa'];
                             <td>' . $row['numCLIENTE'] . '</td>
 							<td>' . $row['nombre_servicio'] . '</td>
                             <td>' . $row['hora'] . '</td>
-                            <td>' . date('d-m-Y', strtotime($row['fecha'])). '</td>				
+                            <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>				
 						</tr>
 						';
                     }
