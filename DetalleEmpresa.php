@@ -33,7 +33,7 @@ include("Funciones/db.php");
             }
             ?>
 
-            <table class="table table-striped table-condensed">
+            <table class="table table-striped table-condensed" aria-describedby="detalleEmpresas">
                 <tr>
                     <th>Nombre de la Empresa</th>
                     <td><?php echo $row['nombre_empresa']; ?></td>
