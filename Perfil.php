@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/Santiago");
 include("Funciones/db.php");
 session_start();
 error_reporting(0);
@@ -116,7 +117,7 @@ $idEmpresa = $row['idEmpresa'];
                     $sql = mysqli_query($conexion, "SELECT * FROM agendamiento
                     RIGHT JOIN horas ON agendamiento.HORAS_idHORAS = horas.idHORAS 
                     INNER JOIN servicio ON agendamiento.SERVICIO_idSERVICIO = servicio.idSERVICIO 
-                    WHERE fecha = '$buscarFecha' AND agendamiento.EMPRESA_idEmpresa = '$idEmpresa' AND fecha > Now() ORDER BY fecha, hora");
+                    WHERE fecha = '$buscarFecha' AND agendamiento.EMPRESA_idEmpresa = '$idEmpresa' AND fecha > (Now() - INTERVAL 1 DAY) ORDER BY fecha, hora");
                 }
                 if (mysqli_num_rows($sql) == 0) {
                     echo '<tr><td colspan="8">No hay datos.</td></tr>';
@@ -135,7 +136,7 @@ $idEmpresa = $row['idEmpresa'];
 
                             if($row['estado']=="activa")
                                 echo 
-        "<a href=Cancelar.php?id=".$row['idAGENDAMIENTO']." class='btn btn-danger'>Cancelar</a>"; 
+        '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'].'" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' .$row['hora'].'?\')" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>';
 							'</td>			
 						</tr>
 						';
