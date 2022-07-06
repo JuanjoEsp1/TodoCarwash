@@ -135,7 +135,7 @@ $idEmpresa = $row['idEmpresa'];
 
                             if($row['estado']=="activa")
                                 echo 
-        "<a href=Cancelar.php?id=".$row['idAGENDAMIENTO']." class='btn red'>Cancelar</a>"; 
+        "<a href=Cancelar.php?id=".$row['idAGENDAMIENTO']." class='btn btn-danger'>Cancelar</a>"; 
 							'</td>			
 						</tr>
 						';
