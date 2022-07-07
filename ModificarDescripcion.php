@@ -64,7 +64,7 @@ $correo = $_SESSION['correo_empresa'];
                     }
                         ?>
                 </form>
-                <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
+                <a type="button" name="Volver" class="btn btn-danger" href="Perfil.php">Volver al Perfil</a>
             </div>
 
 

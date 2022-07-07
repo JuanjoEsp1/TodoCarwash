@@ -56,16 +56,19 @@ $idEmpresa = $row['idEmpresa'];
                     <?php } ?>
                 </select>
 
-                <input type="submit" name="buscar" value="Buscar Fecha">
-                <input type=submit value="Reset" name="btnReset">
+                <input type="submit" name="buscar" class="btn btn-primary" value="Buscar Fecha">
+                <input type=submit value="Reset" class="btn btn-warning" name="btnReset">
+                <a type="button" name="Volver" class="btn btn-danger" href="Perfil.php">Volver al Perfil</a>
             </form>
+            
+            <br><br>
             <table class="table table-striped table-hover" aria-describedby="Agenda">
                 <tr>
                     <th>Nombre</th>
                     <th>Telefono</th>
                     <th>Id Servicio</th>
-                    <th>Hora</th>
                     <th>Fecha</th>
+                    <th>Hora</th>
                 </tr>
                 <?php
 
@@ -91,8 +94,8 @@ $idEmpresa = $row['idEmpresa'];
                             <td>' . $row['nomCLIENTE'] . ' ' . $row['apellCLIENTE'] . '</td>
                             <td>' . $row['numCLIENTE'] . '</td>
 							<td>' . $row['nombre_servicio'] . '</td>
-                            <td>' . $row['hora'] . '</td>
-                            <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>	
+                            <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>
+                            <td>' . $row['hora'] . '</td>	
 						</tr>
 						';
                     }

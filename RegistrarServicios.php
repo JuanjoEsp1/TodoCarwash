@@ -53,7 +53,7 @@ $idEmpresa = $row['idEmpresa'];
         <div class="card mt-4">
             <div class="card-header">
                 <h4>Ingresar Servicios</h4>
-                <a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">Agregar mas Horas</a>
+                <a href="javascript:void(0)" class="add-more-form float-end btn btn-primary">Agregar mas Servicios</a>
             </div>
             <div class="card-body">
 

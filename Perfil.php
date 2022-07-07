@@ -60,25 +60,6 @@ $idEmpresa = $row['idEmpresa'];
 
         <h1>Bienvenido:<?php echo utf8_encode($row['nombre_empresa']); ?></h1>
         <hr>
-        <div class="row">
-            <div class="col-md-12">
-
-                <?php
-                if (isset($_SESSION['status'])) {
-                ?>
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php
-                    unset($_SESSION['status']);
-                }
-                ?>
-
-            </div>
-        </div>
-
-        <hr>
         <h1>Horas Agendadas</h1>
         <hr>
         <article class="table-responsive">
@@ -91,9 +72,10 @@ $idEmpresa = $row['idEmpresa'];
                     <?php } ?>
                 </select>
 
-                <input type="submit" name="buscar" value="Buscar Fecha">
-                <input type=submit value="Reset" name="btnReset">
+                <input type="submit" name="buscar" class="btn btn-primary" value="Buscar Fecha">
+                <input type=submit value="Reset" class="btn btn-warning" name="btnReset">
             </form>
+            <br>
             <table class="table table-striped table-hover" aria-describedby="Agenda">
                 <tr>
                     <th>ID</th>
@@ -133,12 +115,12 @@ $idEmpresa = $row['idEmpresa'];
 							<td>' . $row['nombre_servicio'] . '</td>
                             <td>' . $row['hora'] . '</td>
                             <td>' . date('d-m-Y', strtotime($row['fecha'])) . '</td>
-                            <td>' ;
+                            <td>';
 
-                            if($row['estado']=="activa")
-                                echo 
-        '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'].'" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' .$row['hora'].'?\')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>';
-							'</td>			
+                        if ($row['estado'] == "activa")
+                            echo
+                            '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'] . '" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' . $row['hora'] . '?\')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>';
+                        '</td>			
 						</tr>
 						';
                     }

@@ -59,11 +59,11 @@ $idEmpresa = $row['idEmpresa'];
                             <?php } ?>
                         </select>
 
-                        <input type="submit" name="buscar" value="Buscar Fecha">
-                        <input type=submit value="Reset" name="btnReset">
+                        <input type="submit" name="buscar" class="btn btn-primary" value="Buscar Fecha">
+                        <input type=submit value="Reset" class="btn btn-warning" name="btnReset">
                     </form>
                     <br>
-                    <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
+                    <a type="button" name="Volver" class="btn btn-danger" href="Perfil.php">Volver al Perfil</a>
                     <br>
                     <br>           
                     <table class="table table-striped table-hover" aria-describedby="Horas">
@@ -81,7 +81,7 @@ $idEmpresa = $row['idEmpresa'];
                         if (isset($_POST['buscar'])) {
 
                             $buscarFecha = strval($_POST['search']);
-                            $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE fecha = '$buscarFecha' AND disponible = 'si' ORDER BY fecha, hora ");
+                            $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE fecha = '$buscarFecha' AND EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si' ORDER BY fecha, hora ");
                         }
                         if (mysqli_num_rows($sql) == 0) {
                             echo '<tr><td colspan="8">No hay datos.</td></tr>';
