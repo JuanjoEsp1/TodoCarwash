@@ -1,5 +1,12 @@
 <?php
+  session_start();
+  error_reporting(0);
+  $varsesion = $_SESSION['correo_empresa'];
   
+  if ($varsesion == null || $varsesion = '') {
+      echo 'Usted no tiene autorizacion';
+      die();
+  }
     // Connect to database 
     include("Funciones/db.php");
   
@@ -21,4 +28,3 @@
   
     // Go back to course-page.php
     header('location: Perfil.php');
-?>
