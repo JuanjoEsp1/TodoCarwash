@@ -1,6 +1,6 @@
-<!DOCTYPE >
+<!DOCTYPE html>
 
-<html html lang="es">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 
     <?php
 
-    $conexion = mysqli_connect("localhost", "root", "", "todocarwash2");
+    include("Funciones/db.php");
 
     if (isset($_POST['guardar_servicio'])) {
         $servicio = $_POST['servicio'];
