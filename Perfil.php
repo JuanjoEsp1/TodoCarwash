@@ -58,7 +58,7 @@ $idEmpresa = $row['idEmpresa'];
 
     <div class="container">
 
-        <h1>Bienvenido:<?php echo utf8_encode($row['nombre_empresa']); ?></h1>
+        <h1>Bienvenido: <?php echo utf8_encode($row['nombre_empresa']); ?></h1>
         <hr>
         <h1>Horas Agendadas</h1>
         <hr>
@@ -119,7 +119,7 @@ $idEmpresa = $row['idEmpresa'];
 
                         if ($row['estado'] == "activa")
                             echo
-                            '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'] . '" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda del ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' . $row['hora'] . '?\')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>';
+                            '<a href="Cancelar.php?id=' . $row['idAGENDAMIENTO'] . '" title="Cancelar" onclick="return confirm(\'Esta seguro de cancelar la hora agenda ' . date('d-m-Y', strtotime($row['fecha'])) . ' a las ' . $row['hora'] . '?\')" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>';
                         '</td>			
 						</tr>
 						';
