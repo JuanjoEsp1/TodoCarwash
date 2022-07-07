@@ -53,15 +53,15 @@ $idEmpresa = $row['idEmpresa'];
                 <input id="days-chose" class="form-control" type="text" name="days"> -->
 
                 <label for="">Fecha Inicio</label>
-                <input type="date" name="fechaIn" class="form-control" placeholder="Ingrese Fecha">
+                <input type="date" name="fechaIn" class="form-control" placeholder="Ingrese Fecha" required>
                 <label for="">Fecha Fin</label>
-                <input type="date" name="fechaFin" class="form-control" placeholder="Ingrese Fecha">
+                <input type="date" name="fechaFin" class="form-control" placeholder="Ingrese Fecha" required>
                 <label>Hora de Inicio:</label>
-                <input class="form-control" type="text" id="time1" name="tiempo1">
+                <input class="form-control" type="text" id="time1" name="tiempo1" required>
                 <label>Hora de Cierre:</label>
-                <input class="form-control" type="text" id="time2" name="tiempo2">
+                <input class="form-control" type="text" id="time2" name="tiempo2" required>
                 <label>Dividir Entre:</label>
-                <select class="form-control" name="minutos">
+                <select class="form-control" name="minutos" required>
                     <option></option>
                     <option value="30">30 Minutos</option>
                     <option value="60">1 Hora</option>
@@ -76,10 +76,6 @@ $idEmpresa = $row['idEmpresa'];
 
     </div>
 
-
-    <!-- alert danger -->
-    <div id="alert-error"><i class="fa fa-times fa-2x"></i></div>
-    <!-- alert danger -->
 
     <!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
     <script src="js/jquery.min.js"></script>

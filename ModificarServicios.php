@@ -60,7 +60,7 @@ $idEmpresa = $row['idEmpresa'];
                         }
                     }
                     ?>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover" aria-describedby="servicios">
                         <tr>
                             <th>ID</th>
                             <th>NOMBRE</th>

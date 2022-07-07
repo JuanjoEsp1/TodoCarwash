@@ -61,7 +61,7 @@ include("Funciones/db.php");
             ?>
             <br>
             <article class="table-responsive">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover" aria-describedby="Empresas">
                     <tr>
                         <th>Nombre</th>
                         <th>Calle</th>

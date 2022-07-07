@@ -95,7 +95,7 @@ $idEmpresa = $row['idEmpresa'];
                 <input type="submit" name="buscar" value="Buscar Fecha">
                 <input type=submit value="Reset" name="btnReset">
             </form>
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover" aria-describedby="Agenda">
                 <tr>
                     <th>ID</th>
                     <th>Estado</th>

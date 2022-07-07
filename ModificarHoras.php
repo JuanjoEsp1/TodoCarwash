@@ -65,7 +65,7 @@ $idEmpresa = $row['idEmpresa'];
                     <a type="button" name="Volver" class="btn btn-primary" href="Perfil.php">Volver al Perfil</a>
                     <br>
                     <br>           
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover" aria-describedby="Horas">
                         <tr>
                             <th>ID</th>
                             <th>DISPONIBLE</th>
