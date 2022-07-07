@@ -36,7 +36,7 @@ $idEmpresa = $row['idEmpresa'];
 
     <?php
 
-    $sql2 = mysqli_query($conexion, "SELECT DISTINCT fecha FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa'");
+    $sql2 = mysqli_query($conexion, "SELECT DISTINCT fecha FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND fecha > (Now() - INTERVAL 1 DAY) ORDER BY fecha, hora");
     $resultado2 = ($sql2);
 
     ?>
@@ -76,12 +76,12 @@ $idEmpresa = $row['idEmpresa'];
                         </tr>
                         <?php
                         $FechaActual = date('d-m-Y');
-                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si' AND fecha > Now() ORDER BY fecha, hora ");
+                        $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE EMPRESA_idEmpresa ='$idEmpresa' AND disponible = 'si' AND fecha > (Now() - INTERVAL 1 DAY) ORDER BY fecha, hora ");
 
                         if (isset($_POST['buscar'])) {
 
                             $buscarFecha = strval($_POST['search']);
-                            $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE fecha = '$buscarFecha' ");
+                            $sql = mysqli_query($conexion, "SELECT * FROM horas WHERE fecha = '$buscarFecha' AND disponible = 'si' ORDER BY fecha, hora ");
                         }
                         if (mysqli_num_rows($sql) == 0) {
                             echo '<tr><td colspan="8">No hay datos.</td></tr>';
