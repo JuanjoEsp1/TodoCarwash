@@ -15,7 +15,7 @@ if (isset($_POST['actualizar'])) {
     $NuevoTelefono =    $_POST['telefonoEmpresa'];
     //$userImage    =   $_FILES['userImage'];
 
-    if (!empty($NuevoNombreEmpresa) && !empty($NuevoNombreEmpresa)) {
+    if (!empty($NuevoNombreEmpresa)) {
 
 
         $loggedInUser = $_SESSION['correo_empresa'];
