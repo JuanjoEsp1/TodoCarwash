@@ -30,7 +30,6 @@ include("Funciones/db.php");
     <?php
 
     $sql2 = mysqli_query($conexion, "SELECT DISTINCT comuna FROM empresa");
-    $resultado2 = ($sql2);
 
     ?>
     <section class="container">
@@ -41,7 +40,7 @@ include("Funciones/db.php");
             <form name="Buscarcomuna" action="MostrarEmpresas.php" method="POST">
                 Comunas:
                 <select name="search">
-                    <?php while ($row = $resultado2->fetch_assoc()) {
+                    <?php while ($row = $sql2->fetch_assoc()) {
                     ?>
                         <option value="<?php echo $row['comuna']; ?>"><?php echo $row['comuna']; ?></option>
                     <?php } ?>
