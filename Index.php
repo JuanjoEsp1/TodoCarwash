@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="Image/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="Image/favicon-16x16.png">
     <link rel="manifest" href="Image/site.webmanifest">
+    <title>Inicio</title>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
             <li><a class="a-6" href="Login.php">Iniciar Sesion</a></li>
         </ul>
     </nav>
-    <img src="IMG/logo2.jpg"/>
+    <img src="IMG/logo2.jpg" alt="logo"/>
     <h1>Bienvenido</h1>
 </body>
 
